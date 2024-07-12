@@ -1,47 +1,73 @@
-# State Name Lookup Server and Client
-This project consists of a server and a client application written in C++ that use WinSock for socket communication. The server receives state abbreviations from the client and responds with the corresponding state name. If the abbreviation is invalid, the server returns an error message.
+TCP/IP Client-Server Application in C++
+This repository contains a TCP/IP client-server application implemented in C++. The project demonstrates fundamental concepts of socket programming, data transmission over TCP/IP protocols, and error handling strategies. Whether you're new to network programming or looking to deepen your understanding, this project serves as a practical guide.
 
-# Features
-Server: Listens for incoming connections, handles multiple client connections, and processes state abbreviation lookup requests.
-Client: Connects to the server, sends state abbreviations, and receives state names or error messages.
+Table of Contents
+Features
 Prerequisites
-Windows OS
-Microsoft Visual Studio (or any C++ compiler that supports WinSock)
-Basic knowledge of C++ and socket programming
-Getting Started
-Setting up the Project
-Clone the repository or download the source files server.cpp and client.cpp.
+Installation
+Usage
+Implementation Details
+Contributing
+License
+Features
+Client-Server Interaction: Establishes a connection between a client and server using TCP/IP sockets.
+Data Transmission: Sends and receives data between client and server, demonstrating bidirectional communication.
+Error Handling: Implements robust error handling techniques for socket operations.
+Simple Protocol: Utilizes a simple protocol for sending and receiving state abbreviations and returning corresponding state names.
+Prerequisites
+Before running the application, ensure you have the following installed:
 
-Open the project in your IDE (e.g., Visual Studio).
+C++ compiler compatible with C++11 standards
+Windows environment for Winsock library (winsock2.h, WS2tcpip.h)
+Installation
+Clone the repository:
 
-Ensure WinSock is included in your project settings.
+bash
+Copy code
+git clone https://github.com/your-username/tcp-ip-client-server.git
+cd tcp-ip-client-server
+Compile the server and client applications using your preferred C++ compiler.
 
-Compiling the Code
-Open Visual Studio and create a new project for the server then in the terminal run 'g++ -o client client.cpp -lws2_32' then -> ./client then 'g++ -o server server.cpp -lws2_32' -> ./server
+bash
+Copy code
+g++ server.cpp -o server.exe -lws2_32
+g++ client.cpp -o client.exe -lws2_32
+Usage
+Start the Server:
 
-Add server.cpp to the project.
-Build the project to generate the executable.
-Create another project for the client.
+bash
+Copy code
+./server.exe
+The server initializes and waits for incoming connections on port 55555.
 
-Add client.cpp to the project.
-Build the project to generate the executable.
-Running the Server
-Run the server executable.
-The server will initialize WinSock, create a socket, bind it to 127.0.0.1:55555, and start listening for incoming connections.
-Running the Client
-Run the client executable.
-The client will initialize WinSock, create a socket, and connect to the server at 127.0.0.1:55555.
-The client will prompt you to enter a state abbreviation.
-How it Works
+Run the Client:
+
+bash
+Copy code
+./client.exe
+The client prompts you to enter a state abbreviation (e.g., "CA" for California). It sends the abbreviation to the server, which responds with the corresponding state name.
+
+Interact with the Application:
+
+Enter state abbreviations on the client side to retrieve state names from the server.
+View server console logs for connection status and data exchange messages.
+Implementation Details
 Server (server.cpp)
-Initialize WinSock: The server initializes the WinSock library using WSAStartup().
-Create a Socket: A TCP socket is created using socket().
-Bind the Socket: The socket is bound to the localhost address and port 55555 using bind().
-Listen for Connections: The server listens for incoming connections using listen().
-Accept Connections: The server accepts client connections using accept().
-Handle Client Requests: In a loop, the server receives state abbreviations from the client, looks up the state name, and sends the response back to the client.
+The server application initializes Winsock, creates a TCP/IP socket, binds it to a specified IP address and port, listens for incoming connections, and handles client requests. Key functionalities include:
+
+Socket setup and error checking (socket(), bind(), listen()).
+Accepting incoming client connections (accept()).
+Handling client requests (recv(), send()).
+Data processing and response generation based on predefined state abbreviations.
 Client (client.cpp)
-Initialize WinSock: The client initializes the WinSock library using WSAStartup().
-Create a Socket: A TCP socket is created using socket().
-Connect to Server: The client connects to the server at 127.0.0.1:55555 using connect().
-Send and Receive Data: In a loop, the client prompts the user for a state abbreviation, sends it to the server, and prints the response received from the server.
+The client application initializes Winsock, creates a TCP/IP socket, connects to the server, sends user input (state abbreviations), receives server responses (state names), and displays them to the user. Key functionalities include:
+
+Socket setup and error checking (socket(), connect()).
+Sending user input to the server (send()).
+Receiving server responses (recv()).
+Displaying state names retrieved from the server.
+Contributing
+Contributions are welcome! If you have suggestions for improvements, bug fixes, or additional features, feel free to open an issue or create a pull request.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.

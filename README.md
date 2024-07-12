@@ -1,7 +1,7 @@
 # State Name Lookup Server and Client
 This project consists of a server and a client application written in C++ that use WinSock for socket communication. The server receives state abbreviations from the client and responds with the corresponding state name. If the abbreviation is invalid, the server returns an error message.
 
-Features
+# Features
 Server: Listens for incoming connections, handles multiple client connections, and processes state abbreviation lookup requests.
 Client: Connects to the server, sends state abbreviations, and receives state names or error messages.
 Prerequisites
@@ -17,7 +17,7 @@ Open the project in your IDE (e.g., Visual Studio).
 Ensure WinSock is included in your project settings.
 
 Compiling the Code
-Open Visual Studio and create a new project for the server.
+Open Visual Studio and create a new project for the server then in the terminal run 'g++ -o client client.cpp -lws2_32' then -> ./client then 'g++ -o server server.cpp -lws2_32' -> ./server
 
 Add server.cpp to the project.
 Build the project to generate the executable.
